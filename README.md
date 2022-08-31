@@ -27,3 +27,8 @@ npx react-native run-android
 # Run Tests
 npm test 
 ```
+![Gif](https://media3.giphy.com/media/nAjRmcvlUkcklFHHDx/giphy.gif)
+
+
+
+
