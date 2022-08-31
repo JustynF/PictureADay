@@ -1,6 +1,6 @@
 # A Picture A Day Viewer
 
-React-Native application to browse NASA A Picture a day Series
+React-Native application to browse NASA A Picture a Day Series
 
 ## Running Locally
 
