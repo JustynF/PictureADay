@@ -24,9 +24,6 @@ npx react-native run-ios
 # Run Android
 npx react-native run-android
 
-# Run Android
-npx react-native run-android
-
 # Run Tests
 npm test 
 ```
