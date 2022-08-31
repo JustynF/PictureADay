@@ -4,7 +4,7 @@ React-Native application to browse NASA A Picture a day Series
 
 ## Running Locally
 
-This project is built on React-Native CLI so make sure you've [set up development environment](https://reactnative.dev/docs/environment-setup).
+This project is built on React-Native CLI so make sure you've [set up the development environment](https://reactnative.dev/docs/environment-setup).
 
 ```bash
 # clone the project and cd into it
