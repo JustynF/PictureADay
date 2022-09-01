@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, Text, Pressable, Platform } from 'react-native';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {StyleSheet, View, Text, Pressable, Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Config from '../../Config';
 
@@ -49,7 +49,6 @@ const CustomCalendar: React.FC<Props> = ({
       for (let i = 1; i <= previousMothDay; i++) {
         const date = new Date(newDate);
         date.setDate(prevMonthDate - (previousMothDay - i));
-
         dates.push(date);
       }
     }
@@ -120,13 +119,11 @@ const CustomCalendar: React.FC<Props> = ({
     ) {
       endDate = date;
     } else if (startDate.toDateString() === date.toDateString()) {
-      if(endDate == null){
-        endDate = startDate
-
-      }else{
+      if (endDate == null) {
+        endDate = startDate;
+      } else {
         startDate = null;
       }
-
     } else if (endDate?.toDateString() === date.toDateString()) {
       endDate = null;
     }
@@ -148,7 +145,6 @@ const CustomCalendar: React.FC<Props> = ({
       }
     }
 
-
     startEndDateChange(startDate, endDate);
   };
 
@@ -160,14 +156,13 @@ const CustomCalendar: React.FC<Props> = ({
     const listUI: JSX.Element[] = [];
     for (let i = 0; i < 7; i++) {
       listUI.push(
-        <View key={i.toString()} style={{ flex: 1, alignItems: 'center' }}>
+        <View key={i.toString()} style={{flex: 1, alignItems: 'center'}}>
           <Text
             style={{
               fontSize: 16,
               fontFamily: 'WorkSans-Medium',
               color: '#54D3C2',
-            }}
-          >
+            }}>
             {
               ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][
                 dateList[i].getDay()
@@ -185,10 +180,10 @@ const CustomCalendar: React.FC<Props> = ({
     let count = 0;
     for (let i = 0; i < dateList.length / 7; i++) {
       const listUI: JSX.Element[] = [];
-      for (let j = 0; j < 7; j++)  {
+      for (let j = 0; j < 7; j++) {
         const date = dateList[count];
         listUI.push(
-          <View key={count.toString()} style={{ flex: 1, aspectRatio: 1.0 }}>
+          <View key={count.toString()} style={{flex: 1, aspectRatio: 1.0}}>
             <View
               style={{
                 flex: 1,
@@ -238,17 +233,16 @@ const CustomCalendar: React.FC<Props> = ({
                   ...Platform.select({
                     ios: {
                       shadowColor: 'grey',
-                      shadowOffset: { width: 0, height: 0 },
+                      shadowOffset: {width: 0, height: 0},
                       shadowOpacity: 0.6,
                       shadowRadius: 2.63,
                     },
-                    android: { elevation: 4 },
+                    android: {elevation: 4},
                   }),
                 },
-              ]}
-            >
+              ]}>
               <Pressable
-                style={({ pressed }) => [
+                style={({pressed}) => [
                   {
                     flex: 1,
                     alignItems: 'center',
@@ -256,7 +250,7 @@ const CustomCalendar: React.FC<Props> = ({
                     opacity: !Config.isAndroid && pressed ? 0.4 : 1,
                   },
                 ]}
-                android_ripple={{ borderless: true }}
+                android_ripple={{borderless: true}}
                 onPress={() => {
                   if (currentMonthDate.getMonth() === date.getMonth()) {
                     if (minimumDate != null && maximumDate != null) {
@@ -289,8 +283,7 @@ const CustomCalendar: React.FC<Props> = ({
                       onDateClick(date);
                     }
                   }
-                }}
-              >
+                }}>
                 <Text
                   style={{
                     fontSize: 18,
@@ -302,8 +295,7 @@ const CustomCalendar: React.FC<Props> = ({
                       : currentMonthDate.getMonth() === date.getMonth()
                       ? 'black'
                       : 'lightgrey',
-                  }}
-                >
+                  }}>
                   {date.getDate()}
                 </Text>
                 <View
@@ -330,8 +322,7 @@ const CustomCalendar: React.FC<Props> = ({
       noList.push(
         <View
           key={i.toString()}
-          style={{ flexDirection: 'row', marginVertical: 1 }}
-        >
+          style={{flexDirection: 'row', marginVertical: 1}}>
           {listUI}
         </View>,
       );
@@ -340,21 +331,20 @@ const CustomCalendar: React.FC<Props> = ({
   };
 
   return (
-    <View style={{ paddingHorizontal: 8, paddingVertical: 4 }}>
-      <View style={{ flexDirection: 'row', padding: 8 }}>
+    <View style={{paddingHorizontal: 8, paddingVertical: 4}}>
+      <View style={{flexDirection: 'row', padding: 8}}>
         <View style={styles.arrowContainerStyle}>
           <Pressable
-            style={({ pressed }) => [
+            style={({pressed}) => [
               styles.arrowBtnStyle,
-              { opacity: !Config.isAndroid && pressed ? 0.6 : 1 },
+              {opacity: !Config.isAndroid && pressed ? 0.6 : 1},
             ]}
-            android_ripple={{ color: 'lighgrey' }}
+            android_ripple={{color: 'lighgrey'}}
             onPress={() => {
               // currentMonthDate = new Date();
               currentMonthDate.setMonth(currentMonthDate.getMonth() - 1);
               setListOfDate(currentMonthDate);
-            }}
-          >
+            }}>
             <Icon name="keyboard-arrow-left" size={28} color="grey" />
           </Pressable>
         </View>
@@ -364,27 +354,25 @@ const CustomCalendar: React.FC<Props> = ({
         </Text>
         <View style={styles.arrowContainerStyle}>
           <Pressable
-            style={({ pressed }) => [
+            style={({pressed}) => [
               styles.arrowBtnStyle,
-              { opacity: !Config.isAndroid && pressed ? 0.6 : 1 },
+              {opacity: !Config.isAndroid && pressed ? 0.6 : 1},
             ]}
-            android_ripple={{ color: 'lighgrey' }}
+            android_ripple={{color: 'lighgrey'}}
             onPress={() => {
               // currentMonthDate = new Date();
               currentMonthDate.setMonth(currentMonthDate.getMonth() + 1);
               setListOfDate(currentMonthDate);
-            }}
-          >
+            }}>
             <Icon name="keyboard-arrow-right" size={28} color="grey" />
           </Pressable>
         </View>
       </View>
       <View
-        style={{ flexDirection: 'row', paddingHorizontal: 8, paddingBottom: 8 }}
-      >
+        style={{flexDirection: 'row', paddingHorizontal: 8, paddingBottom: 8}}>
         {getDaysNameUI()}
       </View>
-      <View style={{ paddingHorizontal: 8 }}>{getDaysNoUI()}</View>
+      <View style={{paddingHorizontal: 8}}>{getDaysNoUI()}</View>
     </View>
   );
 };

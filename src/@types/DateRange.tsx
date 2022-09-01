@@ -1,4 +1,4 @@
-export default interface DateRange{
+export default interface DateRange {
   startDate: string;
   endDate: string;
 }

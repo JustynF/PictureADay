@@ -1,17 +1,10 @@
 import React from 'react';
-import {
-  Pressable,
-  StatusBar,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { createStackNavigator } from '@react-navigation/stack';
-import GalaxyViewerHomeScreen from "./View/GalaxyViewer/GalaxyViewerHomeScreen";
-import ImageDetailView from "./View/GalaxyViewer/ImageDetailView"
+import {StatusBar} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {createStackNavigator} from '@react-navigation/stack';
+import GalaxyViewerHomeScreen from './View/GalaxyViewer/GalaxyViewerHomeScreen';
+import ImageDetailView from './View/GalaxyViewer/ImageDetailView';
 const Stack = createStackNavigator();
-
 
 export default () => {
   const inset = useSafeAreaInsets();
@@ -23,19 +16,17 @@ export default () => {
         translucent
       />
 
-      <Stack.Navigator screenOptions={{ headerBackTitle: '', title: '' }}>
-
+      <Stack.Navigator screenOptions={{headerBackTitle: '', title: ''}}>
         <Stack.Screen
           name="HomeScreen"
           component={GalaxyViewerHomeScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="DetailView"
           component={ImageDetailView}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
-
       </Stack.Navigator>
     </>
   );

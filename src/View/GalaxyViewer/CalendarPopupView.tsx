@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -39,21 +39,21 @@ const HALF_MONTHS = [
 const WEEKS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 const CalendarPopup: React.FC<Props> = ({
-                                             showCal,
-                                             setShowCal,
-                                             minimumDate,
-                                             initialStartDate,
-                                             initialEndDate,
-                                             onApplyClick,
-                                           }) => {
+  showCal,
+  setShowCal,
+  minimumDate,
+  initialStartDate,
+  initialEndDate,
+  onApplyClick,
+}) => {
   const [startDate, setStartDate] = useState(initialStartDate);
   const [endDate, setEndDate] = useState(initialEndDate);
 
   const formattedDate = (date: Date | null) => {
     return date
       ? `${WEEKS[date?.getDay()]}, ${String(date.getDate()).padStart(2, '0')} ${
-        HALF_MONTHS[date.getMonth()]
-      }`
+          HALF_MONTHS[date.getMonth()]
+        }`
       : '--/--';
   };
 
@@ -62,19 +62,16 @@ const CalendarPopup: React.FC<Props> = ({
       visible={showCal}
       animationType="fade"
       transparent
-      onRequestClose={() => setShowCal(false)}
-    >
+      onRequestClose={() => setShowCal(false)}>
       <StatusBar backgroundColor="rgba(0,0,0, 0.5)" />
       <TouchableWithoutFeedback
-        style={{ flex: 1 }}
-        onPress={() => setShowCal(false)}
-      >
+        style={{flex: 1}}
+        onPress={() => setShowCal(false)}>
         <SafeAreaView style={styles.containerStyle}>
-          <TouchableWithoutFeedback style={{ flex: 1 }} onPress={() => {}}>
+          <TouchableWithoutFeedback style={{flex: 1}} onPress={() => {}}>
             <View
-              style={{ backgroundColor: 'white', borderRadius: 24, margin: 24 }}
-            >
-              <View style={{ flexDirection: 'row' }}>
+              style={{backgroundColor: 'white', borderRadius: 24, margin: 24}}>
+              <View style={{flexDirection: 'row'}}>
                 <View style={styles.timelineContainerStyle}>
                   <Text style={styles.fromToTextStyle}>From</Text>
                   <Text style={styles.startEndDateTextStyles}>
@@ -89,7 +86,7 @@ const CalendarPopup: React.FC<Props> = ({
                   </Text>
                 </View>
               </View>
-              <View style={{ height: 0.5, backgroundColor: 'lightgrey' }} />
+              <View style={{height: 0.5, backgroundColor: 'lightgrey'}} />
 
               <CustomCalendar
                 minDate={minimumDate}
@@ -103,19 +100,17 @@ const CalendarPopup: React.FC<Props> = ({
 
               <View style={styles.applyBtnMainContainer}>
                 <View
-                  style={{ borderRadius: 24, elevation: 8, overflow: 'hidden' }}
-                >
+                  style={{borderRadius: 24, elevation: 8, overflow: 'hidden'}}>
                   <Pressable
-                    style={({ pressed }) => [
+                    style={({pressed}) => [
                       styles.applyBtn,
-                      { opacity: !Config.isAndroid && pressed ? 0.6 : 1 },
+                      {opacity: !Config.isAndroid && pressed ? 0.6 : 1},
                     ]}
-                    android_ripple={{ color: 'lighgrey' }}
+                    android_ripple={{color: 'lighgrey'}}
                     onPress={() => {
                       onApplyClick(startDate, endDate);
                       setShowCal(false);
-                    }}
-                  >
+                    }}>
                     <Text style={styles.applyBtnText}>Apply</Text>
                   </Pressable>
                 </View>
@@ -145,7 +140,7 @@ const styles = StyleSheet.create({
     color: 'rgba(128, 128, 128, 0.8)',
     marginBottom: 4,
   },
-  startEndDateTextStyles: { fontSize: 16, fontFamily: 'WorkSans-Bold' },
+  startEndDateTextStyles: {fontSize: 16, fontFamily: 'WorkSans-Bold'},
   applyBtn: {
     backgroundColor: '#54D3C2',
     height: 48,
@@ -167,7 +162,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingTop: 8,
     shadowColor: 'grey',
-    shadowOffset: { width: 4, height: 4 },
+    shadowOffset: {width: 4, height: 4},
     shadowOpacity: 0.6,
     shadowRadius: 8,
   },

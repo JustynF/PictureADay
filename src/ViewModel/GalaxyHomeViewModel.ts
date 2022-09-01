@@ -1,4 +1,3 @@
-
 /**
  * The ViewModel is a producer who doesn’t care who consumes data;
  * it can be React component, Vue component, aeroplane or even a cow,
@@ -10,31 +9,27 @@
  * ViewModel updates it, all changes will be automatically reflected back
  * to the View.
  */
-import { useEffect, useState } from "react";
-import {useGetImagesWithinFrame } from "../Services/ApiProvider";
-import ImageData from "../@types/ImageData";
+import {useState} from 'react';
+import {useGetImagesWithinFrame} from '../Services/ApiProvider';
 
 export default function useGalaxyHomeViewModel() {
-
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(() => {
     const date = new Date();
-    date.setDate(date.getDate() );
+    date.setDate(date.getDate());
     return date;
   });
   const [showCal, setShowCal] = useState<boolean>(false);
-  const [images, setImages] = useState<any | []>([])
+  const [images, setImages] = useState<any | []>([]);
 
-  const { data, error,isLoading,isSuccess,isFetching } =  useGetImagesWithinFrame(startDate,endDate);
+  const {data, error, isLoading, isSuccess, isFetching} =
+    useGetImagesWithinFrame(startDate, endDate);
 
-
-   function getImages(payload:any) {
-    setImages(payload)
+  function getImages(payload: any) {
+    setImages(payload);
   }
 
-
   return {
-
     isLoading,
     isSuccess,
     isFetching,
@@ -48,7 +43,6 @@ export default function useGalaxyHomeViewModel() {
     endDate,
     setStartDate,
     setEndDate,
-    setShowCal
-  }
+    setShowCal,
+  };
 }
-

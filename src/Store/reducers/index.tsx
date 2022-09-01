@@ -1,19 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit';
 
 const slice = createSlice({
   name: 'home',
-  initialState: { startDate: null, endDate: null },
+  initialState: {startDate: null, endDate: null},
   reducers: {
-    setDateRange: (state, { payload: { startDate, endDate } }) => {
-      if (typeof startDate !== 'undefined'  && typeof  endDate !== 'undefined') {
-        state.startDate = startDate
-        state.endDate = endDate
+    setDateRange: (state, {payload: {startDate, endDate}}) => {
+      if (typeof startDate !== 'undefined' && typeof endDate !== 'undefined') {
+        state.startDate = startDate;
+        state.endDate = endDate;
       }
-
     },
   },
-})
+});
 
-export const { setDateRange } = slice.actions
+export const {setDateRange} = slice.actions;
 
-export default slice.reducer
+export default slice.reducer;

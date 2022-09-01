@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,18 +8,17 @@ import {
   ListRenderItemInfo,
   useWindowDimensions,
 } from 'react-native';
-import { Rating } from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import ImageData from "../../@types/ImageData";
+import ImageData from '../../@types/ImageData';
 
 interface Props {
   data: ListRenderItemInfo<ImageData>;
 }
 
-const ImageListItem: React.FC<Props> = ({ data }) => {
-  const { width } = useWindowDimensions();
-  const { item, index } = data;
+const ImageListItem: React.FC<Props> = ({data}) => {
+  const {width} = useWindowDimensions();
+  const {item, index} = data;
   const translateY = useRef<Animated.Value>(new Animated.Value(50)).current;
   const opacity = useRef<Animated.Value>(new Animated.Value(0)).current;
 
@@ -44,28 +43,25 @@ const ImageListItem: React.FC<Props> = ({ data }) => {
 
   return (
     <Animated.View
-      style={[styles.container, { opacity, transform: [{ translateY }] }]}
-    >
+      style={[styles.container, {opacity, transform: [{translateY}]}]}>
       <View style={styles.imageContainer}>
         <Image
-          style={{ height: imageSize / 2, width: imageSize }}
-          source={{uri:item.url}}
+          style={{height: imageSize / 2, width: imageSize}}
+          source={{uri: item.url}}
           resizeMode="stretch"
         />
         <Icon
-          style={{ position: 'absolute', right: 0, padding: 16 }}
+          style={{position: 'absolute', right: 0, padding: 16}}
           name="favorite-border"
           size={24}
           color="#54D3C2"
-          onPress={() =>{
-            console.log("ressed")
+          onPress={() => {
+            console.log('ressed');
           }}
-
-
         />
       </View>
-      <View style={{ padding: 8, paddingHorizontal: 16 }}>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
+      <View style={{padding: 8, paddingHorizontal: 16}}>
+        <View style={{flex: 1, flexDirection: 'row'}}>
           <Text style={styles.title}>{item.title}</Text>
         </View>
       </View>
@@ -86,7 +82,7 @@ const styles = StyleSheet.create({
     // overflow: 'hidden',
     elevation: 8,
     shadowColor: 'grey',
-    shadowOffset: { width: 4, height: 4 },
+    shadowOffset: {width: 4, height: 4},
     shadowOpacity: 0.3,
     shadowRadius: 12,
   },
@@ -95,12 +91,12 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 16,
     overflow: 'hidden',
   },
-  title: { flex: 1, fontSize: 22, fontFamily: 'WorkSans-SemiBold' },
+  title: {flex: 1, fontSize: 22, fontFamily: 'WorkSans-SemiBold'},
   subText: {
     ...textStyle,
     flex: 1,
     paddingRight: 4,
-  }
+  },
 });
 
 export default ImageListItem;

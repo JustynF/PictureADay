@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 import {
   StyleSheet,
   View,
@@ -12,12 +12,14 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Config from '../../Config';
 
-interface Props {route:any}
+interface Props {
+  route: any;
+}
 
 const infoHeight = 364.0;
 
@@ -67,27 +69,25 @@ const ImageDetailView: React.FC<Props> = ({route}) => {
   const boxedInfoItem = (text1: string, text2: string) => (
     <View style={styles.boxInfoContainer}>
       <Text style={[styles.textStyle, styles.boxInfoTitle]}>{text1}</Text>
-      <Text style={[styles.textStyle, { fontSize: 14 }]}>{text2}</Text>
+      <Text style={[styles.textStyle, {fontSize: 14}]}>{text2}</Text>
     </View>
   );
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <StatusBar backgroundColor="transparent" barStyle="dark-content" />
       <ImageBackground
-        style={{ flex: 1 }}
-        imageStyle={{ height: window.width / 1.2 }}
-        source={{uri:route.params.itemData.url}}
-      >
+        style={{flex: 1}}
+        imageStyle={{height: window.width / 1.2}}
+        source={{uri: route.params.itemData.url}}>
         <View
           style={{
             flex: 1,
             shadowColor: 'grey',
-            shadowOffset: { width: 1.1, height: 1.1 },
+            shadowOffset: {width: 1.1, height: 1.1},
             shadowOpacity: 0.2,
             shadowRadius: 10.0,
-          }}
-        >
+          }}>
           <ScrollView
             style={[
               styles.scrollContainer,
@@ -100,19 +100,15 @@ const ImageDetailView: React.FC<Props> = ({route}) => {
               flexGrow: 1,
               minHeight: infoHeight,
               // maxHeight: tempHeight > infoHeight ? tempHeight : infoHeight,
-            }}
-          >
+            }}>
             <Text style={styles.imageTitle}>{route.params.itemData.title}</Text>
             <View style={styles.imageDateContainer}>
-              <Text
-                style={[
-                  styles.textStyle,
-                  { flex: 1 },
-                ]}
-              >
+              <Text style={[styles.textStyle, {flex: 1}]}>
                 {route.params.itemData.date}
               </Text>
-              <Text style={styles.textStyle}>{route.params.itemData.service_version}</Text>
+              <Text style={styles.textStyle}>
+                {route.params.itemData.service_version}
+              </Text>
               <Icon name="star" size={24} color="#54D3C2" />
             </View>
             <Animated.View
@@ -122,24 +118,20 @@ const ImageDetailView: React.FC<Props> = ({route}) => {
                 opacity: opacity1.current,
               }}
               renderToHardwareTextureAndroid // just to avoid UI glitch when animating view with elevation
-            >
-
-            </Animated.View>
+            />
             <Animated.Text
-              style={[styles.imageDescription, { opacity: opacity2.current }]}
-            >
+              style={[styles.imageDescription, {opacity: opacity2.current}]}>
               {route.params.itemData.explanation}
             </Animated.Text>
           </ScrollView>
         </View>
         <Pressable
-          style={({ pressed }) => [
+          style={({pressed}) => [
             styles.backBtn,
-            { marginTop, opacity: !Config.isAndroid && pressed ? 0.4 : 1 },
+            {marginTop, opacity: !Config.isAndroid && pressed ? 0.4 : 1},
           ]}
-          android_ripple={{ color: 'darkgrey', borderless: true, radius: 28 }}
-          onPress={() => navigation.goBack()}
-        >
+          android_ripple={{color: 'darkgrey', borderless: true, radius: 28}}
+          onPress={() => navigation.goBack()}>
           <Icon name="arrow-back-ios" size={24} color="white" />
         </Pressable>
       </ImageBackground>
@@ -186,7 +178,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     elevation: 3,
     shadowColor: 'grey',
-    shadowOffset: { width: 1.1, height: 1.1 },
+    shadowOffset: {width: 1.1, height: 1.1},
     shadowOpacity: 0.22,
     shadowRadius: 8.0,
   },
